@@ -1,4 +1,5 @@
 
+<%@page import="DAO.EspectadoresDAO"%>
 <%@page import="Modelo.Espectador"%>
 <%@page import="DAO.OradoresDAO"%>
 <%@page import="Modelo.Orador"%>
@@ -133,7 +134,69 @@
                      </div>
                     </form>
                 </div>
+                          </div>
+               <!-- Mostrar datos-->
+                
+                <div class="container mt-5">
+            <h2>Gestión de Espectadores</h2>
+            <table class="table table-bordered">
                
+                <thead>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+                <th>Acciones</th>
+                </thead>
+                <tbody>
+                
+                    <%
+                        // Recuperar datos del espectador en la aplicación
+                       
+                        Espectador p  =(Espectador)request.getServletContext().getAttribute("espectador");
+                        if (p != null) {
+                        if(p.getNombre()!= null){
+                    %>
+                   <tr>
+                        <td><%=p.getNombre()%></td>
+                        <td><%=p.getApellido()%></td>
+                        <td><%=p.getCorreo()%></td>
+                        <td>
+
+                            <div class="d-flex">
+                                
+                 <!-- Formulario para actualizar -->
+                                <form action="GestionEspectadorServlet" method="post" class="mr-2">
+                                    <input type="hidden" name="accion" value="actualizar">
+                                    <button type="submit" class="btn btn-warning btn-block">Actualizar</button>
+                                </form>
+
+                                <!-- Formulario para eliminar -->
+                                <form action="GestionEspectadorServlet" method="post">
+                                    <input type="hidden" name="accion" value="eliminar">
+                                    <button type="submit" class="btn btn-danger btn-block">Eliminar</button>
+                                </form>
+                                
+                               <!-- Confirmar datos -->
+                                <form >
+                                    <input type="hidden" name="accion" value="eliminar">
+                                    <a  class="btn btn-success btn-block" href="../">Confirmar</a>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                                 <%}}
+                        
+               else {
+                  %>
+                    <tr>
+                        <td colspan="6">No hay oradores registrados.</td>
+                    </tr>
+                    <%
+                        }
+                    %>
+                                 </tbody>
+                                 
+            </table>
             </main>
            
         </body>

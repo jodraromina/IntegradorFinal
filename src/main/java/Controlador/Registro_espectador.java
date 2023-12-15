@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @WebServlet("/vistas/registroEspectador")
@@ -20,20 +18,25 @@ public class Registro_espectador extends HttpServlet {
         String apellido = request.getParameter("apellido");
         String correo = request.getParameter("correo");
 
-        // Crear un objeto Orador con los datos
+        // Crear un objeto Espectador con los datos
         Espectador p = new Espectador();
         p.setNombre(nombre);
         p.setApellido(apellido);
         p.setCorreo(correo);
 
        
-        // Agregar el orador a la base de datos
+        // Agregar el espectador a la base de datos
         EspectadoresDAO eDAO = new EspectadoresDAO();
         eDAO.agregarEspectador(p);
         
+        
+       
+// Guarda el espectador en el contexto de la aplicación
+        getServletContext().setAttribute("espectador", p);
+
 
         // Redireccionar a la página de visualización de tickets
-      response.sendRedirect(request.getContextPath() + "/vistas/Tickets.jsp");
+    response.sendRedirect(request.getContextPath() + "/vistas/gestionEspectador.jsp");
         
     }
 }

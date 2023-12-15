@@ -6,7 +6,7 @@ package Modelo;
 
 
 public class Espectador {
-    private int idEspectador;
+    private int id;
     private String nombre;
     private String apellido;
     private String correo;
@@ -14,8 +14,8 @@ public class Espectador {
     public Espectador() {
     }
 
-    public int getIdEspectador() {
-        return idEspectador;
+    public int getId() {
+        return id;
     }
 
     public String getNombre() {
@@ -30,8 +30,8 @@ public class Espectador {
         return correo;
     }
 
-    public void setIdEspectador(int idEspectador) {
-        this.idEspectador = idEspectador;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setNombre(String nombre) {
@@ -45,6 +45,7 @@ public class Espectador {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-    
+
+       
     
 }
