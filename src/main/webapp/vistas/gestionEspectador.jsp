@@ -179,7 +179,7 @@
                                <!-- Confirmar datos -->
                                 <form >
                                     <input type="hidden" name="accion" value="eliminar">
-                                    <a  class="btn btn-success btn-block" href="../">Confirmar</a>
+                                    <a  class="btn btn-success btn-block" href="Tickets.jsp">Confirmar</a>
                                 </form>
                             </div>
                         </td>
